@@ -21,7 +21,7 @@ composer require mikeotizels/php-cors
 | Option | Type | Default | Description |
 |-----------|----------|------------|-------------------|
 | allowedOrigins | array  |  `[]` | Matches the request origin.  |
-| allowedOriginsPatterns | array  | `[] `| Matches the request origin with `preg_match()`. |
+| allowedOriginsPatterns | array  | `[]` | Matches the request origin with `preg_match()`. |
 | allowedMethods |  array | `[]` |  Matches the request method. |
 | allowedHeaders | array  | `[]` | Sets the Access-Control-Allow-Headers response header. |
 |exposedHeaders |  array | `[]` | Sets the Access-Control-Expose-Headers response header.|
@@ -263,5 +263,6 @@ class ResponseEmitter extends SlimResponseEmitter
 - **Actual requests** `Access-Control-*` headers are injected based on your settings.
 
 ## Licensing
+
 
 This package is released under the MIT License. See the [LICENSE](LICENSE) file.
