@@ -1,0 +1,55 @@
+{
+    "name": "mikeotizels/php-cors",
+    "type": "library",
+    "version": "1.0.0",
+    "description": "A simple CORS (Cross-Origin Resource Sharing) service provider for PSR-7 requests.",
+    "keywords": ["cors", "psr-7", "slim"],
+    "homepage": "https://github.com/mikeotizels/php-cors",
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/mikeotizels/php-cors/issues",
+        "source": "https://github.com/mikeotizels/php-cors"
+    },
+    "authors": [
+        {
+            "name": "Michael Otieno",
+            "homepage": "https://mikeotizels.github.io"
+        }
+    ],
+    "require": {
+        "php": "^8.1 | ^8.2",
+        "psr/http-message": "^1.1 || ^2.0"
+    },
+    "require-dev": {
+        "nyholm/psr7": "^1.8",
+        "phpunit/phpunit": "^9.6 || ^10",
+        "phpstan/phpstan": "^2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mikeotizels\\Cors\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mikeotizels\\Cors\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": [
+            "@phpunit",
+            "@phpstan"
+        ],
+        "phpunit": "@php phpunit",
+        "phpstan": "@php phpstan --memory-limit=-1"
+    },
+    "suggest": {
+        "psr/http-factory": "Needed for PSR-7 HTTP message factory.",
+        "psr/http-server-handler": "Needed for HTTP middleware integration.",
+        "psr/http-server-middleware": "Needed for HTTP request handler process.",
+        "psr/container": "Needed for common container interface.",
+        "php-di/php-di": "Needed for dependency injection container."
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
