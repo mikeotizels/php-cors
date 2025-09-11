@@ -10,7 +10,7 @@ Inspired by [fruitcake/php-cors](https://github.com/fruitcake/php-cors), which i
 
 ## Installation
 
-Require the package using composer:
+Require the package using Composer:
 
 ```bash
 composer require mikeotizels/php-cors
@@ -32,9 +32,9 @@ You don't need to provide both _allowedOrigins_ and _allowedOriginsPatterns_. If
 
 The _allowedMethods_ and _allowedHeaders_ options are case-insensitive.
 
-If `['*']` is set for _allowedOrigins_, _allowedMethods_ or _allowedHeaders_ all origins, methods, and headers are allowed respectfully.
+If `['*']` is set for _allowedOrigins_, _allowedMethods_, or _allowedHeaders_, all origins, methods, and headers are allowed, respectively.
 
-All the options can also be passed in snake_case (eg. allowed_origins, allowed_methods, allowed_headers, etc.)
+All options can also be passed in snake_case (e.g., allowed_origins, allowed_methods, allowed_headers, etc.).
 
 > Note: Allowing a single static origin improves cacheability.
 
@@ -81,7 +81,7 @@ $cors->addActualRequestHeaders(Response $response, Request $request);
 
 ### Example Usage: as a middleware for slim framework
 
-#### 1. Setup CORS Input Options
+#### 1. Set up CORS Input Options
 
 In **`app/settings.php`**:
 
@@ -98,7 +98,7 @@ return function (ContainerBuilder $containerBuilder) {
         // Global Settings Object
         SettingsInterface::class => function () {
             return new Settings([
-            	// other options (eg. for Logger)...
+            	// other options (eg, for Logger)...
 
                 'cors' => [    
                     'allowedOrigins' => ['*'],
@@ -160,7 +160,7 @@ return function (ContainerBuilder $containerBuilder) {
         },
     ]);
 
-    // other definitions (eg. for LoggerInterface)...
+    // other definitions (eg, for LoggerInterface)...
 };
 ```
 
@@ -217,7 +217,7 @@ use Slim\App;
 
 return function (App $app) {
     $app->add(CorsMiddleware::class);
-    // other middliware...
+    // other middleware...
 };
 ```
 
@@ -225,7 +225,7 @@ return function (App $app) {
 
 In `app/src/Response/ResponseEmitter.php` or wherever your Slim `ResponseEmitter` is:
 
-Ensure the class does not rewrite any headers; it should only emit response.
+Please make sure the class does not rewrite any headers; it should only emit a response.
 
 ```php
 <?php
@@ -266,3 +266,4 @@ class ResponseEmitter extends SlimResponseEmitter
 
 
 This package is released under the MIT License. See the [LICENSE](LICENSE) file.
+
