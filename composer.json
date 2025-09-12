@@ -1,7 +1,6 @@
 {
     "name": "mikeotizels/php-cors",
     "type": "library",
-    "version": "1.0.0",
     "description": "A simple CORS (Cross-Origin Resource Sharing) service provider for PSR-7 requests.",
     "keywords": ["cors", "psr-7", "slim"],
     "homepage": "https://github.com/mikeotizels/php-cors",
@@ -52,4 +51,5 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true
+
 }
