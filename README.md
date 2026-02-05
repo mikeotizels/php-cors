@@ -51,6 +51,7 @@ This package can be used as a stand-alone library or as a middleware in your fra
 use Mikeotizels\Cors\CorsService;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
 
 // Instantiate the object
 $cors = new CorsService();
@@ -59,22 +60,25 @@ $cors = new CorsService();
 $cors->setOptions([
     'allowedOrigins'         => ['http://localhost', 'https://*.example.com'],
     'allowedOriginsPatterns' => ['/localhost:\d/'],
-    'allowedMethods'         => ['GET', 'POST', 'PUT', 'DELETE'],
+    'allowedMethods'         => ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     'allowedHeaders'         => ['x-allowed-header', 'x-other-allowed-header'],
     'exposedHeaders'         => ['Content-Encoding'],
     'supportsCredentials'    => false,
     'maxAge'                 => 0
 ]);
 
-// Handle preflight (OPTIONS) request
-if ($cors->isPreflightRequest(Request $request);) {
-    return $cors->handlePreflightRequest(Request $request);
+// Handle preflight request
+if ($cors->isPreflightRequest($request)) {
+    return $cors->handlePreflightRequest($request);
 }
 
-// Handle the actual request...
+// Handle the actual request
+$response = $handler->handle($request);
 
-// Add the actual headers
-$cors->addActualRequestHeaders(Response $response, Request $request);
+// Add the actual CORS headers
+$response = $cors->addActualRequestHeaders($response, $request);
+
+// Continue with $response (emit/return it)
 ```
 
 ---
@@ -266,4 +270,5 @@ class ResponseEmitter extends SlimResponseEmitter
 
 
 This package is released under the MIT License. See the [LICENSE](LICENSE) file.
+
 
